@@ -10,10 +10,12 @@
         </div>
         <div>
           <p><%= post.content %></p>
+          <%= render 'favorites/favorite_button', post: post %>
         </div>
         <div>
           <% if current_user == post.user %>
             <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            
           <% end %>
         </div>
       </div>
