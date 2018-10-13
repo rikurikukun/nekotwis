@@ -1,5 +1,3 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 <div class="row">
   <aside class="col-xs-4">
     <div class="panel panel-default">
@@ -18,6 +16,6 @@
       <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>Followings <span class="badge"><%= @count_followings %></span><% end %></li>
       <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>Followers <span class="badge"><%= @count_followers %></span><% end %></li>
     </ul>
-    <%= render 'posts/posts', posts: @posts %>
+    <%= render 'users', users: @followings %>
   </div>
 </div>
