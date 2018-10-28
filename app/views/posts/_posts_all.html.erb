@@ -1,0 +1,30 @@
+<ul class="media-list">
+  <% posts.each do |post| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= posts.user.picture_url %>" alt="">
+        
+      </div>
+      <div class="media-body">
+        <div class="posts_user_name">
+          <%= link_to posts.user.name, user_path(posts.user) %> <span class="text-muted">posted at <%= posts.created_at %></span>
+        </div>
+        <div>
+          <p><%= posts.content %></p>
+          <p>
+          <%= image_tag(posts.image_url)  if posts.image.present?  %>
+          </p>
+          
+        </div>
+        <div>
+          <% if current_user == posts.user %>
+            <%= link_to "とうこうをさくじょ", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate posts %>
+</ul>
+

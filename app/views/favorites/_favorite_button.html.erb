@@ -3,11 +3,13 @@
     <%= form_for(post.favorites.find_by(user_id: current_user.id), html: { method: :delete }) do |f| %>
      
       <%= hidden_field_tag :post_id, post.id %>
-      <%= f.submit 'Unfavorite', class: 'btn btn-danger btn-block' %>
+      <%= image_submit_tag "unokifavo.png" %>
+     
     <% end %>
   <% else %>
     <%= form_for(current_user.favorites.build) do |f| %>
       <%= hidden_field_tag :post_id, post.id %>
-      <%= f.submit 'Favorite', class: 'btn btn-primary btn-block' %>
-  <% end %>
+      <%= image_submit_tag "okifavo.png" %>
+       
+ <% end %>
 <% end %>

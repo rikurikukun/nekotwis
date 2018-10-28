@@ -1,0 +1,51 @@
+<aside class="col-xs-4">
+    
+      <div class="panel-heading">
+      </div>
+      <div class="panel-body">
+       <%= form_for(@user) do |f| %>
+         <img class="panel-pic" src="<%= @user.picture %>" alt="">　
+         <img src="/images/logo89.png" alt="プロフィール">
+         <%= f.file_field :picture %>
+         <img src="/images/logo84.png" alt="なまえ">
+         <%= f.text_field :name %>
+         <img src="/images/logo85.png" alt="変更するじこしょうかい">
+         <%= f.text_field :profile %>
+       </div>
+        <p class="edit-image-center">
+        <%= image_submit_tag "logo87.png" %>
+      </p>
+      <% end %>
+  </aside>
+
+　<aside class="col-xs-4">
+    
+      <div class="panel-heading">
+      </div>
+      <div class="panel-body">
+      <%= form_for(@user) do |f| %>
+       <img src="/images/logo91.png" alt="email">
+       <%= f.text_field :email %>
+
+　　　 
+　　　<img src="/images/logo92.png" alt="password">
+　　　 <%= f.text_field :password %>
+      </div>
+       
+
+    <p class="edit-image-center">
+      <%= image_submit_tag "logo87.png" %>
+    </p>
+    
+    <% end %>
+  </aside>
+  
+ 
+ <div class="out-center">
+
+ <%= link_to logout_path(@user), method: :delete do  %><img src="/images/logout.png" alt="logout"><% end %>
+ 
+ 
+ <%= link_to user_delete_path(@user),method: :delete do  %><img src="/images/userdestroy.png" alt="logout"><% end %>
+ 
+ </div>

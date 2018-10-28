@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.page(params[:page])
+  
+    
   end
 
   def show
@@ -10,16 +12,28 @@ class UsersController < ApplicationController
     @posts = @user.posts.order('created_at DESC').page(params[:page])
     counts(@user)
   end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "編集完了しました"
+      redirect_to @user
+    else
+      flash[:danger] = "編集できませんでした"
+      render :edit
+      
+    end
+  end
 
   def new
     @user = User.new
   end
   
-  def edit
-  end
-  
-  def update
-  end
+ 
 
   def create
     @user = User.new(user_params)
@@ -34,12 +48,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    
+    User.find(params[:user_id]).destroy
+    flash[:success] = "アカウントをけしました"
+    redirect_to (root_url)
   end
   
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
     counts(@user)
+   
   end
   
   def followers
@@ -57,6 +76,6 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :picture ,:profile)
   end
 end

@@ -1,7 +1,9 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
 <div class="text-center">
-  <h1>Sign up</h1>
+ 
+  <p class="img_center">
+    <img src="images/sinki2.png" alt="新規登録">
+  </p>
 </div>
 
 <div class="row">
@@ -14,7 +16,7 @@
 
       <div class="form-group">
         
-<%= f.label :name, 'Name' %>
+<%= f.label :name, '名前' %>
 
         
 <%= f.text_field :name, class: 'form-control' %>
@@ -23,7 +25,7 @@
 
       <div class="form-group">
         
-<%= f.label :email, 'Email' %>
+<%= f.label :email, 'メールアドレス' %>
 
         
 <%= f.email_field :email, class: 'form-control' %>
@@ -32,7 +34,7 @@
 
       <div class="form-group">
         
-<%= f.label :password, 'Password' %>
+<%= f.label :password, 'パスワード' %>
 
         
 <%= f.password_field :password, class: 'form-control' %>
@@ -41,7 +43,7 @@
 
       <div class="form-group">
         
-<%= f.label :password_confirmation, 'Confirmation' %>
+<%= f.label :password_confirmation, '確認のためもう一度パスワード' %>
 
         
 <%= f.password_field :password_confirmation, class: 'form-control' %>
@@ -49,7 +51,9 @@
       </div>
 
       
-<%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
+<%= f.submit '登録', class: 'btn btn-info btn-block' %>
+<p>ログインの方はこちらです
+<a class="navbar-center" href="/login"><img src="/images/l.png" alt="新規登録"></a></p>
 
     
 <% end %>

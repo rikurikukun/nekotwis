@@ -1,25 +1,51 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
-      <%= form_for(@post) do |f| %>
+      
+    <div class="panel-heading">
+      </div>
+      <div class="panel-body">
+       <img class="panel-pic" src="<%= current_user.picture %>" alt="">　
+       <img src="/images/namae2.png" alt="なまえ">
+        <h4><%= current_user.name %></h4>
+       <img src="/images/profile3.png" alt="じこしょうかい">
+        <h4><%= current_user.profile %></h4>
+      </div>
+   
+   
+     
+    </aside>
+    <div class="col-xs-8">
+       <%= form_for(@post) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
         </div>
       <div class="form-group">
-        <%= f.file_field :image, class: 'form-control', rows: 5 %>
+        <%= f.file_field :image, class: 'form-control',rows: 5%>
       </div>
-       <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+       <%= f.submit 'そうしん', class: 'btn btn-info ' %>
       <% end %>
-    </aside>
-    <div class="col-xs-8">
-      <%= render 'posts/posts', posts: @posts %>
+      
+      
+      
+      <%= render 'posts/posts_index', posts: @posts %>
     </div>
   </div>
 <% else %>
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>ねこのせかい</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+  <% content_for :cover do %>
+    <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-contents">
+        <h1>私たちが知らない<br>ねこのせかいをここに</h1>
+        
+          <a class="navbar-center" href="/login"><img src="/images/logo 19.png" alt="login"></a><br>
+          <a class="navbar-center" href="/signup"><img src="/images/logo 20.png" alt="signup"></a>
+        </div>
+      </div>
     </div>
   </div>
+ <p class="center-font">
+   このアプリを通してねこのせかいをしっていただけるとうれしいです
+ </p>
+　<% end %>
 <% end %>
